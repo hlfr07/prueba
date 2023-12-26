@@ -250,7 +250,6 @@ router.post("/login", async (req, res) => {
               nombreperfil: resultadodetablausuario.perfil,
               idusuario: resultadodetablausuario.idusuario,
               nombreusuario: resultadodetablausuario.nombre,
-              
             };
             console.log(resultadodetablausuario.idperfil,resultadodetablausuario.perfil,resultadodetablausuario.idusuario,resultadodetablausuario.nombre);
             switch (resultadodetablausuario.idperfil) {
