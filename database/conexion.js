@@ -8,15 +8,18 @@ const pool = mysql.createPool({
   port: 3306,
   database: 'cholon'
 });
+
 */
 
 const pool = mysql.createPool({
-  host: 'bflolatg26vnltushcor-mysql.services.clever-cloud.com',
-  user: 'ubyrfgevexfh8ehj',
-  password: 'fsHd5lPmnvsQa63o8SmD',
+  host: 'bv1n9vnt5nxgenj8fftd-mysql.services.clever-cloud.com',
+  user: 'ueb1ypkbsh1uxsi6',
+  password: 'KZdGMgmcf2pXgJGasLwU',
   port: 3306,
-  database: 'bflolatg26vnltushcor'
+  database: 'bv1n9vnt5nxgenj8fftd'
 });
+
+
 
 // Exporta el pool para que pueda ser utilizado desde otros módulos
 module.exports = pool;
