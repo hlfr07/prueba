@@ -87,6 +87,7 @@ const {
   vistaregiscompras, sumarcantidades, regcompras, regcompras2, productosporcate,
 } = require("../controllers/controladmincompras/regiscomprascontrollers");
 const { vistavisucompra } = require("../controllers/controladmincompras/visuacomprascontrollers");
+const {vistaSupervisor2} = require("../controllers/controladorsupervisor/supervisorController");
 
 const router = express.Router();
 
@@ -149,67 +150,75 @@ router.put("/admin/password/:id", protegerRutas, updatepasswordPUT);
 
 //ADMINCOMPRAS-PROVEEDORES
 router.get("/admin/proveedores",protegerRutas, vistaproveedores);
-router.post("/proveedores", regisproveedor);
-router.get("/proveedores/:id", vistaproveedorid);
-router.put("/proveedores/:id", updateproveedoresPUT);
-router.delete("/proveedores/:id", deleteproveedores);
-router.delete("/borraproveedor/:id", actproveedor);
+router.post("/admin/proveedores",protegerRutas, regisproveedor);
+router.get("/admin/proveedores/:id",protegerRutas, vistaproveedorid);
+router.put("/admin/proveedores/:id",protegerRutas, updateproveedoresPUT);
+router.delete("/admin/proveedores/:id",protegerRutas, deleteproveedores);
+router.delete("/admin/borraproveedor/:id", protegerRutas, actproveedor);
 
 //ADMIALMACEN-CATEGORIAS
 router.get("/admin/categoria", protegerRutas, vistacategoria);
-router.post("/categoria", regiscategoria);
-router.get("/categoria/:id", vistacategoriaid);
-router.put("/categoria/:id", updatecategoriaPUT);
-router.delete("/categoria/:id", deletecategoria);
-router.delete("/borracategoria/:id", actcategoria);
+router.post("/admin/categoria",protegerRutas, regiscategoria);
+router.get("/admin/categoria/:id", protegerRutas, vistacategoriaid);
+router.put("/admin/categoria/:id",protegerRutas, updatecategoriaPUT);
+router.delete("/admin/categoria/:id",protegerRutas, deletecategoria);
+router.delete("/admin/borracategoria/:id",protegerRutas, actcategoria);
 
 //PRODUCTO
-router.get("/admin/producto",protegerRutas, vistaproducto);
-router.post("/producto", regisproducto);
-router.get("/producto/:id", vistaproductoid);
-router.put("/producto/:id", updateproductoPUT);
-router.delete("/producto/:id", deleteproducto);
-router.delete("/borraproducto/:id", actproducto);
+router.get("/admin/producto",protegerRutas,protegerRutas, vistaproducto);
+router.post("/admin/producto",protegerRutas, regisproducto);
+router.get("/admin/producto/:id",protegerRutas, vistaproductoid);
+router.put("/admin/producto/:id",protegerRutas, updateproductoPUT);
+router.delete("/admin/producto/:id",protegerRutas, deleteproducto);
+router.delete("/admin/borraproducto/:id",protegerRutas, actproducto);
 
 //ADMIALMACEN-CATEGORIAS
 router.get("/admin/unidad",protegerRutas, vistaunidad);
-router.post("/unidad", regisunidad);
-router.get("/unidad/:id", vistaunidadid);
-router.put("/unidad/:id", updateunidadPUT);
-router.delete("/unidad/:id", deleteunidad);
-router.delete("/borraunidad/:id", actunidad);
+router.post("/admin/unidad",protegerRutas, regisunidad);
+router.get("/admin/unidad/:id",protegerRutas, vistaunidadid);
+router.put("/admin/unidad/:id",protegerRutas, updateunidadPUT);
+router.delete("/admin/unidad/:id",protegerRutas, deleteunidad);
+router.delete("/admin/borraunidad/:id",protegerRutas, actunidad);
 
 //CLIENTES
 router.get("/admin/clientes",protegerRutas, vistaclientes);
-router.post("/clientes", regisclientes);
-router.get("/clientes/:id", vistaclientesid);
-router.put("/clientes/:id", updateclientesPUT);
-router.delete("/clientes/:id", deleteclientes);
-router.delete("/borracliente/:id", actclientes);
+router.post("/admin/clientes",protegerRutas, regisclientes);
+router.get("/admin/clientes/:id",protegerRutas, vistaclientesid);
+router.put("/admin/clientes/:id",protegerRutas, updateclientesPUT);
+router.delete("/admin/clientes/:id",protegerRutas, deleteclientes);
+router.delete("/admin/borracliente/:id",protegerRutas, actclientes);
 
 //GALPON
 router.get("/admin/galpon",protegerRutas, vistagalpon);
-router.post("/galpon", regisgalpon);
-router.get("/galpon/:id", vistagalponid);
-router.put("/galpon/:id", updategalponPUT);
-router.delete("/galpon/:id", deletegalpon);
-router.delete("/borragalpon/:id", actgalpon);
+router.post("/admin/galpon",protegerRutas, regisgalpon);
+router.get("/galpon/:id",protegerRutas, vistagalponid);
+router.put("/admin/galpon/:id",protegerRutas, updategalponPUT);
+router.delete("/admin/galpon/:id",protegerRutas, deletegalpon);
+router.delete("/admin/borragalpon/:id",protegerRutas, actgalpon);
 
 //CONTROL GALPON
-router.get("/controlgalpon", vistacontrolgalpon);
-router.post("/controlgalpon", regiscontrolgalpon);
-router.get("/controlgalpon/:id", vistacontrolgalponid);
-router.put("/controlgalpon/:id", updatecontrolgalponPUT);
-router.delete("/controlgalpon/:id", deletecontrolgalpon);
-router.delete("/borracontrolgalpon/:id", actcontrolgalpon);
+router.get("/admin/controlgalpon",protegerRutas, vistacontrolgalpon);
+router.post("/admin/controlgalpon",protegerRutas, regiscontrolgalpon);
+router.get("/admin/controlgalpon/:id",protegerRutas, vistacontrolgalponid);
+router.put("/admin/controlgalpon/:id",protegerRutas, updatecontrolgalponPUT);
+router.delete("/admin/controlgalpon/:id",protegerRutas, deletecontrolgalpon);
+router.delete("/admin/borracontrolgalpon/:id",protegerRutas, actcontrolgalpon);
 
 //CONTROL COMPRAS
 router.get("/admin/regcompras", protegerRutas,vistaregiscompras);
-router.patch("/sumarcantidad", sumarcantidades);
-router.post("/regcompras", regcompras);
-router.post("/regcompras2", regcompras2);
+router.patch("/admin/sumarcantidad",protegerRutas, sumarcantidades);
+router.post("/admin/regcompras",protegerRutas, regcompras);
+router.post("/admin/regcompras2",protegerRutas, regcompras2);
 //vista compras
 router.get("/admin/vistacompra", protegerRutas, vistavisucompra);
+
+
+
+// vista de SUPERVISOR HECHO POR UN INSANO TLV NO EDITES
+router.get("/supervisor",protegerRutas, vistaSupervisor2);
+
+
+
 
 
 //LOGIN

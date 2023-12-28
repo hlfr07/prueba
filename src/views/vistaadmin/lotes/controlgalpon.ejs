@@ -264,7 +264,7 @@
                     function botoneditar(idcontrolgalpon) {
                         // Asignar el ID del perfil al campo oculto
 
-                        axios.get(`/controlgalpon/${idcontrolgalpon}`)
+                        axios.get(`/admin/controlgalpon/${idcontrolgalpon}`)
                             .then(function (response) {
                                 const respuestadelquery = response.data;
                                 if (respuestadelquery) {
@@ -300,7 +300,7 @@
                         console.log(data);
 
                         // Enviar una solicitud POST a la ruta "clientes" utilizando Axios
-                        axios.post('/controlgalpon', data)
+                        axios.post('/admin/controlgalpon', data)
                             .then(function (response) {
                                 // Mostrar un mensaje de éxito con SweetAlert
                                 Swal.fire({
@@ -313,7 +313,7 @@
 
                                 // Redirigir al usuario después de 2 segundos (2000 ms)
                                 setTimeout(function () {
-                                    window.location.href = '/controlgalpon';
+                                    window.location.href = '/admin/controlgalpon';
                                 }, 2000);
                             })
 
@@ -341,7 +341,7 @@
                         };
 
 
-                        axios.put(`/controlgalpon/${idcontrolgalpon}`, data)
+                        axios.put(`/admin/controlgalpon/${idcontrolgalpon}`, data)
                             .then(function (response) {
                                 Swal.fire({
                                     icon: 'success',
@@ -373,7 +373,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/controlgalpon/${idcontrolgalpon}`)
+                                axios.delete(`/admin/controlgalpon/${idcontrolgalpon}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Perfil eliminado con éxito');
@@ -400,7 +400,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/borracontrolgalpon/${idcontrolgalpon}`)
+                                axios.delete(`/admin/borracontrolgalpon/${idcontrolgalpon}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Habitacion restablecido con éxito');

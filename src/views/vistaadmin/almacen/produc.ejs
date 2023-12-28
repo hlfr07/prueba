@@ -305,7 +305,7 @@
                     function botoneditar(idproducto) {
                         // Asignar el ID del perfil al campo oculto
 
-                        axios.get(`/producto/${idproducto}`)
+                        axios.get(`/admin/producto/${idproducto}`)
                             .then(function (response) {
                                 const respuestadelquery = response.data;
                                 if (respuestadelquery) {
@@ -347,7 +347,7 @@
                         console.log(data);
 
                         // Enviar una solicitud POST a la ruta "clientes" utilizando Axios
-                        axios.post('/producto', data)
+                        axios.post('/admin/producto', data)
                             .then(function (response) {
                                 // Mostrar un mensaje de éxito con SweetAlert
                                 Swal.fire({
@@ -390,7 +390,7 @@
                         };
 
 
-                        axios.put(`/producto/${idproducto}`, data)
+                        axios.put(`/admin/producto/${idproducto}`, data)
                             .then(function (response) {
                                 Swal.fire({
                                     icon: 'success',
@@ -422,7 +422,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/producto/${idproducto}`)
+                                axios.delete(`/admin/producto/${idproducto}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Producto eliminado con éxito');
@@ -449,7 +449,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/borraproducto/${idproducto}`)
+                                axios.delete(`/admin/borraproducto/${idproducto}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Producto restablecido con éxito');

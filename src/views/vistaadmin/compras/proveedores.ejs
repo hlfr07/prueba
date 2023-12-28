@@ -353,7 +353,7 @@
                         };
 
                         // Enviar una solicitud POST a la ruta "clientes" utilizando Axios
-                        axios.post('/proveedores', data)
+                        axios.post('/admin/proveedores', data)
                             .then(function (response) {
                                 // Mostrar un mensaje de éxito con SweetAlert
                                 Swal.fire({
@@ -376,7 +376,7 @@
                     function botoneditar(idproveedor) {
                         // Asignar el ID del perfil al campo oculto
 
-                        axios.get(`/proveedores/${idproveedor}`)
+                        axios.get(`/admin/proveedores/${idproveedor}`)
                             .then(function (response) {
                                 const respuestadelquery = response.data;
                                 if (respuestadelquery) {
@@ -424,7 +424,7 @@
                         console.log(data);
 
 
-                        axios.put(`/proveedores/${idproveedor}`, data)
+                        axios.put(`/admin/proveedores/${idproveedor}`, data)
                             .then(function (response) {
                                 Swal.fire({
                                     icon: 'success',
@@ -456,7 +456,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/proveedores/${idproveedor}`)
+                                axios.delete(`/admin/proveedores/${idproveedor}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Proveedor eliminado con éxito');
@@ -484,7 +484,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/borraproveedor/${idproveedor}`)
+                                axios.delete(`/admin/borraproveedor/${idproveedor}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Proveedor restablecido con éxito');

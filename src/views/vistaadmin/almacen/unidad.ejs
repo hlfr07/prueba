@@ -205,7 +205,7 @@
                     function botoneditar(idunidad) {
                         // Asignar el ID del perfil al campo oculto
 
-                        axios.get(`/unidad/${idunidad}`)
+                        axios.get(`/admin/unidad/${idunidad}`)
                             .then(function (response) {
                                 const respuestadelquery = response.data;
                                 if (respuestadelquery) {
@@ -230,7 +230,7 @@
                         };
 
                         // Enviar una solicitud POST a la ruta "clientes" utilizando Axios
-                        axios.post('/unidad', data)
+                        axios.post('/admin/unidad', data)
                             .then(function (response) {
                                 // Mostrar un mensaje de éxito con SweetAlert
                                 Swal.fire({
@@ -262,7 +262,7 @@
                         };
 
 
-                        axios.put(`/unidad/${idunidad1}`, data)
+                        axios.put(`/admin/unidad/${idunidad1}`, data)
                             .then(function (response) {
                                 Swal.fire({
                                     icon: 'success',
@@ -294,7 +294,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/unidad/${idunidad}`)
+                                axios.delete(`/admin/unidad/${idunidad}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Unidad eliminado con éxito');
@@ -322,7 +322,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // El usuario confirmó la eliminación, realiza la solicitud DELETE con Axios
-                                axios.delete(`/borraunidad/${idunidad}`)
+                                axios.delete(`/admin/borraunidad/${idunidad}`)
                                     .then((response) => {
                                         // Si la solicitud DELETE se completa con éxito, puedes manejar la respuesta aquí
                                         console.log('Unidad restablecido con éxito');

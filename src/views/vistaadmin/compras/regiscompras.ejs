@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="inputState" class="form-label">IGV:</label>
-                                    <input type="text" class="form-control" id="idigv" readonly>
+                                    <input type="text" class="form-control" id="idigv">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="inputZip" class="form-label">TOTAL:</label>
@@ -350,12 +350,12 @@
                         console.log(compra);
 
                         // 1. Realizar una solicitud de tipo DELETE con axios
-                        axios.patch('/sumarcantidad', { productos: listaProductos })
+                        axios.patch('/admin/sumarcantidad', { productos: listaProductos })
                             .then(deleteResponse => {
                                 console.log('DELETE response:', deleteResponse.data);
 
                                 // 2. Realizar una solicitud de tipo POST con axios para registrar la compra
-                                return axios.post('/regcompras', compra);
+                                return axios.post('/admin/regcompras', compra);
                             })
                             .then(primerPostResponse => {
                                 console.log('Primer POST response:', primerPostResponse.data);
@@ -369,7 +369,7 @@
                                 });
 
                                 // 4. Realizar otra solicitud de tipo POST con axios para registrar la lista de productos
-                                return axios.post('/regcompras2', { productos: listaProductos });
+                                return axios.post('/admin/regcompras2', { productos: listaProductos });
                             })
                             .then(segundoPostResponse => {
                                 console.log('Segundo POST response:', segundoPostResponse.data);
@@ -520,8 +520,7 @@
 // Obtener el campo de entrada por su ID
 const inputIGV = document.getElementById('idigv');
 
-// Establecer el valor predeterminado del campo del IGV como 0.18
-inputIGV.value = '0.18';
+
 
 
 

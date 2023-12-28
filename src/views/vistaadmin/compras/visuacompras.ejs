@@ -54,7 +54,9 @@
                             </div>
 
                             <form id="dateForm">
-                                <label for="fechaBusqueda">Ingresa tu fecha de búsqueda:  <input type="date" id="fechaBusqueda" name="fechaBusqueda" /> <button type="button" onclick="filtrarPorFecha()">Buscar</button></label>
+                                <label for="fechaBusqueda">Ingresa tu fecha de búsqueda: <input type="date"
+                                        id="fechaBusqueda" name="fechaBusqueda" /> <button type="button"
+                                        onclick="filtrarPorFecha()">Buscar</button></label>
                             </form>
 
                             <h1>COMPRAS DEL DÍA</h1>
@@ -74,17 +76,18 @@
                                             </h5>
                                             <h6>
                                                 <p class="text-center">
-                                                    <i class="fa-solid fa-clock"></i> Hora de la compra: <%= compras.horacompra_12h %>
+                                                    <i class="fa-solid fa-clock"></i> Hora de la compra: <%=
+                                                        compras.horacompra_12h %>
                                                 </p>
                                             </h6>
-                                                <span class="cd-date">
-                                                    <h6>
+                                            <span class="cd-date">
+                                                <h6>
                                                     <i class="fa-solid fa-calendar-days"></i>
                                                     <%= new Date(compras.fecha_compra).toLocaleDateString('es-ES', {
-                                                        weekday: 'long' , year: 'numeric' , month: 'long' , day: 'numeric'
-                                                        }) %>
-                                                    </h6>
-                                                </span>
+                                                        weekday: 'long' , year: 'numeric' , month: 'long' ,
+                                                        day: 'numeric' }) %>
+                                                </h6>
+                                            </span>
                                         </div>
                                     </div>
                                     <% }); %>
@@ -99,22 +102,30 @@
                                     var seccionVentas = document.getElementById('filtrarcompra');
                                     var ventas = seccionVentas.getElementsByClassName('cd-timeline-block');
 
-                                    // Itera sobre las ventas y muestra u oculta según la fecha
-                                    for (var i = 0; i < ventas.length; i++) {
-                                        var fechaVentaStr = ventas[i].querySelector('.cd-date').textContent.trim();
-                                        console.log(fechaVentaStr);
-                                        console.log(fechaBusqueda);
-
-                                        // Formatea ambas fechas al mismo formato
-                                        var fechaVentaFormateada = fechaVentaStr;
-                                        var fechaBusquedaFormateada = formatearFecha(fechaBusqueda);
-
-                                        // Compara las fechas formateadas
-                                        console.log(fechaVentaFormateada, "==", fechaBusquedaFormateada);
-                                        if (fechaVentaFormateada === fechaBusquedaFormateada) {
+                                    // Verifica si la fecha de búsqueda está vacía
+                                    if (!fechaBusqueda) {
+                                        // Si está vacía, muestra todas las ventas
+                                        for (var i = 0; i < ventas.length; i++) {
                                             ventas[i].style.display = 'block';
-                                        } else {
-                                            ventas[i].style.display = 'none';
+                                        }
+                                    } else {
+                                        // Si no está vacía, filtra por fecha
+                                        for (var i = 0; i < ventas.length; i++) {
+                                            var fechaVentaStr = ventas[i].querySelector('.cd-date').textContent.trim();
+                                            console.log(fechaVentaStr);
+                                            console.log(fechaBusqueda);
+
+                                            // Formatea ambas fechas al mismo formato
+                                            var fechaVentaFormateada = fechaVentaStr;
+                                            var fechaBusquedaFormateada = formatearFecha(fechaBusqueda);
+
+                                            // Compara las fechas formateadas
+                                            console.log(fechaVentaFormateada, "==", fechaBusquedaFormateada);
+                                            if (fechaVentaFormateada === fechaBusquedaFormateada) {
+                                                ventas[i].style.display = 'block';
+                                            } else {
+                                                ventas[i].style.display = 'none';
+                                            }
                                         }
                                     }
                                 }
