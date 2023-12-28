@@ -38,17 +38,18 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#lotes"
+        <a class="nav-link collapsed" onclick="mostrarMensajeModuloEnDesarrollo()" href="#" data-toggle="collapse" data-target="#lotes"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-layer-group fa-beat-fade" style="color: white;font-size: 20px;"></i>
             <span>LOTES</span>
         </a>
-        <div id="lotes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <!--
+        <div id="lotes" onclick="mostrarMensajeModuloEnDesarrollo()" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Vistas:</h6>
                 <a class="collapse-item" href="/admin/galpon">Galpones</a>
             </div>
-        </div>
+        </div> -->
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#compras"
@@ -81,25 +82,28 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ventas"
+        <a class="nav-link collapsed" onclick="mostrarMensajeModuloEnDesarrollo()" href="#" data-toggle="collapse" data-target="#ventas"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-sack-dollar fa-beat-fade" style="color: white; font-size: 20px;"></i>
             <span>VENTAS</span>
         </a>
+        <!--
         <div id="ventas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Vistas:</h6>
                 <a class="collapse-item" href="/clientes">Clientes</a>
                 <a class="collapse-item" href="/admin/usuarios">Usuarios</a>
             </div>
-        </div>
+        </div> -->
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportes"
+        <a class="nav-link collapsed" onclick="mostrarMensajeModuloEnDesarrollo()" href="#" data-toggle="collapse" data-target="#reportes"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-chart-simple fa-beat-fade" style="color: white; font-size: 20px;"></i>
             <span>REPORTES</span>
         </a>
+
+        <!--
         <div id="reportes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Vistas:</h6>
@@ -108,8 +112,21 @@
                 <a class="collapse-item" href="/admin/reguser">Registrar Usuarios</a>
                 <a class="collapse-item" href="/admin/password">Cambiar contraseña</a>
             </div>
-        </div>
+        </div>-->
     </li>
+
+    <script>
+        function mostrarMensajeModuloEnDesarrollo() {
+            Swal.fire({
+                                    icon: 'info',
+                                    title: 'Módulo en desarrollo.',
+                                    text: 'Pronto estará disponible.',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                })
+            // Puedes personalizar el mensaje o utilizar otras formas de notificación según tus necesidades.
+        }
+    </script>
 
 
 
