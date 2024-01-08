@@ -23,6 +23,23 @@ WHERE compras.estado_compra = 1
 ORDER BY compras.horacompra DESC;
 
 `;
+ // Consulta SQL para obtener tipos de habitacion
+ const sqlproductos = `SELECT 
+ detalle_compras.iddetalle,
+ detalle_compras.idcompra,
+ productos.nombre_producto,
+ categoria.nombre_categoria,
+ detalle_compras.cantidad,
+ detalle_compras.precio_compra,
+ detalle_compras.total
+FROM 
+ detalle_compras
+JOIN 
+ productos ON detalle_compras.idproducto = productos.idproducto
+JOIN 
+ categoria ON productos.idcategoria = categoria.idcategoria;
+
+`;
 // Consulta SQL para obtener categorias 
 const sqlProveedor = `
 SELECT * FROM  proveedor
@@ -37,21 +54,25 @@ WHERE estado = 1;
 `;
   // Ejecuta ambas consultas SQL de manera asíncrona utilizando promesas
   try {
-    const [compras,proveedor,usuario] = await Promise.all([
+    const [compras,proveedor,usuario,productos] = await Promise.all([
       pool.promise().query(sqlActivo),
       pool.promise().query(sqlProveedor),
       pool.promise().query(sqlUsuario),
+      pool.promise().query(sqlproductos),
+
     ]);
 
     console.log("Compras Activos:", compras[0]);
     console.log("Proveedor:",proveedor [0]);
     console.log("Usuario:", usuario[0]);
+    console.log("Tipo:", productos[0]);
 
     // Envía los resultados de ambas consultas a la vista con los nombres pisosActivos y pisosInactivos
     res.render("vistaadmin/compras/visuacompras", {
       compras: compras[0],
       proveedor:proveedor[0],
       usuario: usuario[0],
+      productos: productos[0],
       nombre: nombre,
       perfil: perfil 
     });

@@ -10,13 +10,12 @@ const pool = mysql.createPool({
 });
 */
 
-
 const pool = mysql.createPool({
-  host: 'bv1n9vnt5nxgenj8fftd-mysql.services.clever-cloud.com',
-  user: 'ueb1ypkbsh1uxsi6',
-  password: 'KZdGMgmcf2pXgJGasLwU',
+  host: 'b6xjmi7j0ue8hwkunxuy-mysql.services.clever-cloud.com',
+  user: 'upfmpx4fksb0n2rb',
+  password: 'DCOz8a8lnV98o3Wgpeof',
   port: 3306,
-  database: 'bv1n9vnt5nxgenj8fftd'
+  database: 'b6xjmi7j0ue8hwkunxuy'
 });
 
 

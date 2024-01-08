@@ -209,7 +209,7 @@
   margin-left: 60px;
   border-radius: 0.25em;
   padding: 1em;
-  background-color: #01579B;
+  background-color:  #01579B;
   color: #fff;
 }
 .cd-timeline-content::after {
@@ -269,7 +269,7 @@
         height: 60px;
     }
     .cd-timeline-content .cd-date {
-        color: #01579B;
+        color:#01579B;
     }
     .cd-timeline-content {
         margin-left: 0;
@@ -297,7 +297,7 @@
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: #01579B;
+    border-right-color:#01579B;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
@@ -382,3 +382,124 @@
 		padding-left: 0;
 	}
 }
+/* Estilos CSS */
+/* Estilos CSS */
+@keyframes blink {
+  0% {
+    background-color: #01579B; /* Primer color de fondo */
+    border-color:  #01579B; /* Primer color del borde */
+  }
+  50% {
+    background-color:#1c6daa; /* Segundo color de fondo */
+    border-color: #1c6daa; /* Segundo color del borde */
+  }
+  100% {
+    background-color: #01579B; /* Volver al primer color de fondo */
+    border-color: #01579B; /* Volver al primer color del borde */
+  }
+}
+
+.btn.btn-success {
+  animation: blink 1.5s infinite; /* Aplicar la animación de parpadeo */
+  color: white; /* Cambiar el color del texto a blanco para mayor contraste */
+}
+.oculto {
+  display: none;
+}
+<style>
+    /* Estilos para la tabla */
+    #tablaPro {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px; /* Espacio debajo de la tabla */
+    }
+
+    #tablaPro th,
+    #tablaPro td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #tablaPro th {
+        background-color:  #e18d2c;
+        color: #FFF;
+    }
+
+    /* Estilos para filas impares */
+    #tablaPro tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Ocultar la tabla inicialmente */
+    .oculto {
+        display: none;
+    }
+</style>
+<style>
+    /* Estilos para el botón */
+    #btnVisualizar {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #btnVisualizar:hover {
+        background-color: #3a94ee;
+    }
+</style>
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-top: 1px solid #dee2e6;
+        }
+        thead th {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: 2px solid #dee2e6;
+        }
+        tbody tr:nth-of-type(even) {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+        tbody td {
+            word-break: break-word;
+        }
+        button {
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #17a2b8;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #138496;
+        }
+    </style>
+    .ocultar-titulo {
+      display: none;
+  }
+  
