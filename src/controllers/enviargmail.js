@@ -43,17 +43,13 @@ const enviarGMAIL = async (req, res) => {
 
 
       const contentHTML = `
-        <h1>Recuperación de contraseña</h1>
-        <p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
-        <a href="${resetLink}">${resetLink}</a>
+        <h1>Recuperación de contraseña: </h1>
         <br />
-        <p>Guarda este Token  para generar tu nueva contraseña : </p>
+        <p>Guarda este CODIGO  para generar tu nueva contraseña : </p>
+        <h2> --------------------------------------------------- </h2>
         <h2> ${codigo} </h2>
-
-
-
-        <h3>El token vence en un dia ten encuenta eso , si se vence ya tendras que generar otro restablecer</h3>
-        
+        <h2> --------------------------------------------------- </h2>
+        <h3>El CODIGO vence en 2 minutos un dia ten encuenta eso , si se vence ya tendras que generar otro restablecer</h3>
       `;
 
       const mailOptions = {
