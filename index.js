@@ -4,6 +4,8 @@ const app = express();
 const cors = require("cors");
 const path = require('path');
 
+// Aplicar el middleware CORS a todas las rutas
+app.use(cors());
 // Configurar middleware para procesar datos del formulario
 app.use(express.urlencoded({ extended: true }));
 /*----------------------------------------------------------------------------------------------------------------*/
