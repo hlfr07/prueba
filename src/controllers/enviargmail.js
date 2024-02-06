@@ -43,13 +43,12 @@ const enviarGMAIL = async (req, res) => {
 
 
       const contentHTML = `
-        <h1>Recuperación de contraseña: </h1>
-        <br />
-        <p>Guarda este CODIGO  para generar tu nueva contraseña : </p>
-        <h2> --------------------------------------------------- </h2>
-        <h2> ${codigo} </h2>
-        <h2> --------------------------------------------------- </h2>
-        <h3>El CODIGO vence en 2 minutos un dia ten encuenta eso , si se vence ya tendras que generar otro restablecer</h3>
+      <div style="max-width: 600px; margin: 50px auto; background-color: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+      <h1 style="color: #3498db;">Recuperación de contraseña</h1>
+      <p>Guarda este <strong style="color: #3498db;">CODIGO</strong> para generar tu nueva contraseña:</p>
+      <input style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #3498db; margin-top: 10px; box-sizing: border-box; color: #3498db; font-size: 16px; text-align: center; outline: none;" type="text" value="${codigo}" readonly>
+      <h3 style="color: #3498db;">El <strong style="color: #3498db;">CODIGO</strong> vence en 2 minutos. Tenlo en cuenta. Si expira, deberás generar otro restablecimiento.</h3>
+      </div>
       `;
 
       const mailOptions = {
