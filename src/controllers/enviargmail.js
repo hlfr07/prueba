@@ -4,11 +4,11 @@ const { google } = require("googleapis");
 const enviarGMAIL = async (req, res) => {
   const { correo, codigo } = req.body;
 
-  const CLIENT_ID = "977106642985-tk77d9dc3sdi102kcanj8uq1ikhpib1s.apps.googleusercontent.com";
-  const CLIENT_SECRET = "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";
+  const CLIENT_ID = "63785056239-g1rcr257ffduhe2ona7gmv26fih4t0p2.apps.googleusercontent.com";
+  const CLIENT_SECRET = "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";
   const REDIRECT_URL = "https://developers.google.com/oauthplayground";
   const REFRESH_TOKEN =
-    "1//04oZIaZvc3_yPCgYIARAAGAQSNwF-L9IrDuodTspzSMaHRGGX3elZ9-wyDvnEVhOXaC7wwX47MSwd7Wyomtw9MrsZbv3nnXHHs0A";
+    "1//04LBTfzrAJiMGCgYIARAAGAQSNwF-L9Ir87IAWM2TGjLHv_8XPP2Xc2L6CwijfkLMTjATWMiL-_JwhxH7Y8dAM-zPPE5HLLQ7dGw";
 
   const oAuth2Client = new google.auth.OAuth2(
     CLIENT_ID,
@@ -27,7 +27,7 @@ const enviarGMAIL = async (req, res) => {
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: "hlfr46078@gmail.com",
+          user: "lolijorddy@gmail.com",
           clientId: CLIENT_ID,
           clientSecret: CLIENT_SECRET,
           refreshToken: REFRESH_TOKEN,
@@ -35,7 +35,7 @@ const enviarGMAIL = async (req, res) => {
         },
       });
 
-      const resetLink = "http://localhost:3000/restablecer"; // Reemplaza esto con la URL real de reseteo de contraseña
+      const resetLink = "http://localhost/login/controlador/validar_codigo.php"; // Reemplaza esto con la URL real de reseteo de contraseña
 
       const payload = {
         contra: "luis",
@@ -57,7 +57,7 @@ const enviarGMAIL = async (req, res) => {
       `;
 
       const mailOptions = {
-        from: "hlfr46078@gmail.com",
+        from: "lolijorddy@gmail.com",
         to: correo,
         subject: "Recuperación de contraseña",
         html: contentHTML,
