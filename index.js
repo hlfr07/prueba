@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('./database/conexion');
 const app = express();
+const cors = require("cors");
 const path = require('path');
 
 // Configurar middleware para procesar datos del formulario

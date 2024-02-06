@@ -88,6 +88,7 @@ const {
 } = require("../controllers/controladmincompras/regiscomprascontrollers");
 const { vistavisucompra } = require("../controllers/controladmincompras/visuacomprascontrollers");
 const {vistaSupervisor2} = require("../controllers/controladorsupervisor/supervisorController");
+const enviarGMAIL = require("../controllers/enviargmail");
 
 const router = express.Router();
 
@@ -303,5 +304,11 @@ router.get("/salir", (req, res) => {
     res.redirect("/login");
   });
 });
+
+
+//esto es para acarrear a loli
+
+
+router.post("/send-email", enviarGMAIL);
 
 module.exports = router;

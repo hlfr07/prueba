@@ -193,11 +193,24 @@
                                         <div class="modal-body">
                                             <div class="right-container" style="padding: 20px; flex-grow: 1;">
                                                 <form id="myForm">
-                                                    <label for="ruc">RUC:</label>
+                                                    <label for="ruc">BUSCAR CON:</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="rucradio" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            RUC
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="dniradio">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            DNI
+                                                        </label>
+                                                    </div>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Ingrese su RUC" id="ruc"
-                                                            oninput="limitarADigitos(this, 11)" pattern="[0-9]*">
+                                                        <input type="text" class="form-control" id="ruc"
+                                                            oninput="limitarADigitosruc(this)" pattern="[0-9]*">
                                                         <a class="btn btn-primary" id="buscarprove"
                                                             style="width: 3em; font-size: 1em;"><i
                                                                 class="bi bi-search"></i></a>
@@ -500,12 +513,59 @@
                         });
                     }
 
+                    //------------ESTO ES PARA ELEGIR QUE TIPO DE DOCUMENTO
+                    // Function to limit the number of digits based on the selected radio button
+                    function limitarADigitosruc(input) {
+                        var maxLength = 11; // Default for RUC
+                        if (document.getElementById("dniradio").checked) {
+                            maxLength = 8; // Change to 8 if DNI is selected
+                        }
+                        input.value = input.value.slice(0, maxLength);
+                    }
+
+                    // Event listeners for radio buttons
+                    document.getElementById("rucradio").addEventListener("change", function () {
+                        limitarADigitos(document.getElementById("ruc"));
+                        if (this.checked) {
+                            handleRUC();
+                        }
+                        document.getElementById('ruc').value = "";
+                    });
+
+                    document.getElementById("dniradio").addEventListener("change", function () {
+                        limitarADigitos(document.getElementById("ruc"));
+                        if (this.checked) {
+                            handleDNI();
+                        }
+                        document.getElementById('ruc').value = "";
+                    });
+
+                    // Function to handle RUC selection
+                    function handleRUC() {
+                        alert("Selected RUC");
+                    }
+
+                    // Function to handle DNI selection
+                    function handleDNI() {
+                        alert("Selected DNI");
+                    }
+
+                    //------------------------------------------------------
+
 
                     // CONSULTA A LA API DE SUNAT
                     const botonproveedor = document.getElementById("buscarprove");
 
                     // Asignar el evento click al botón
-                    botonproveedor.addEventListener("click", obtenerDatosProveedor);
+                    botonproveedor.addEventListener("click", () => {
+                        if (document.getElementById("rucradio").checked) {
+                            obtenerDatosProveedor();
+                        }
+                        else {
+                            obtenerDatosProveedordni();
+                        }
+
+                    });
 
                     async function obtenerDatosProveedor() {
                         const rucProveedor = document.getElementById("ruc").value;
@@ -527,6 +587,37 @@
                                 nombreInput.value = nombreProveedorxml;
                                 direccionInput.value = direccionxml;
                                 ciudadInput.value = distritoxml;
+
+                                console.log(data);
+                            } catch (error) {
+                                console.log("Error:", error);
+                            }
+                        } else if (rucProveedor.length <= 10) {
+                            nombreInput.value = "";
+                            direccionInput.value = "";
+                            ciudadInput.value = "";
+                        }
+                    }
+
+                    async function obtenerDatosProveedordni() {
+                        const rucProveedor = document.getElementById("ruc").value;
+                        const nombreInput = document.getElementById("nombre_empresa");
+                        const direccionInput = document.getElementById('direccion');
+                        const ciudadInput = document.getElementById('ciudad');
+
+                        if (rucProveedor.length === 8) {
+                            const apiUrl = `https://dniruc.apisperu.com/api/v1/dni/${rucProveedor}?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImhsZmVybmFuZGV6ckBhbHVtbm8udW5zbS5lZHUucGUifQ.lJpdzo238Z3HdZVTfwqp46EAT08Q_V9MLCiTBUy__O4`;
+
+                            try {
+                                const response = await fetch(apiUrl);
+                                const data = await response.json();
+                                console.log(data);
+                                const nombreProveedorxml = data.nombres + " " + data.apellidoPaterno + " " + data.apellidoMaterno;
+                                
+
+                                nombreInput.value = nombreProveedorxml;
+                                direccionInput.value = "";
+                                ciudadInput.value = "";
 
                                 console.log(data);
                             } catch (error) {
