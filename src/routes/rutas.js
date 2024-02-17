@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 const pool = require("../../database/conexion");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
@@ -89,6 +90,7 @@ const {
 const { vistavisucompra } = require("../controllers/controladmincompras/visuacomprascontrollers");
 const {vistaSupervisor2} = require("../controllers/controladorsupervisor/supervisorController");
 const enviarGMAIL = require("../controllers/enviargmail");
+const { uploadImage } = require("../controllers/subirimagen");
 
 const router = express.Router();
 
@@ -127,6 +129,33 @@ router.use(
     saveUninitialized: true,
   })
 );
+
+//PARA MI API DE SUBIDA DE IMAGENES
+
+// Configurar el middleware multer para manejar la carga de archivos
+const storage = multer.memoryStorage(); // Almacenar la imagen en memoria (puedes ajustar según tus necesidades)
+// Configuración de Multer para manejar la carga de archivos
+
+// Filtrar solo archivos de imagen
+const filtro_de_archivo = (req, file, cb) => {
+  if (file.mimetype.startsWith('image/')) {
+    cb(null, true);
+  } else {
+    cb(new Error('El archivo no es una imagen'), false);
+    
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  fileFilter: filtro_de_archivo
+});
+
+
+router.post("/image", upload.single("imagen"), uploadImage);
+
+
+//-------------------------------
 
 //ADMIN
 router.get("/registro", vistaregiadmin);
@@ -217,9 +246,6 @@ router.get("/admin/vistacompra", protegerRutas, vistavisucompra);
 
 // vista de SUPERVISOR HECHO POR UN INSANO TLV NO EDITES
 router.get("/supervisor",protegerRutas, vistaSupervisor2);
-
-
-
 
 
 //LOGIN

@@ -179,7 +179,8 @@
                                                     <label for="codigo_producto">Codigo:</label>
                                                     <div class="input-group mb-3">
                                                         <input type="text" class="form-control"
-                                                            placeholder="Ingrese el Codigo" id="codigo_producto"oninput="validarYConvertir2(this)">
+                                                            placeholder="Ingrese el Codigo" id="codigo_producto"
+                                                            oninput="validarYConvertir2(this)">
                                                     </div>
                                                     <label for="nombre_producto">Nombre del Producto:</label>
                                                     <input type="text" placeholder="Ingrese el Nombre"
@@ -268,12 +269,12 @@
                                                     </select>
 
                                                     <label for="descripcion1">Descripcion</label>
-                                                    <input type="text" placeholder="Ingrese direccion"
-                                                        id="descripcion1" oninput="validarYConvertir1(this)">
+                                                    <input type="text" placeholder="Ingrese direccion" id="descripcion1"
+                                                        oninput="validarYConvertir1(this)">
 
-                                                        <label for="stock1">Stock:</label>
-                                                        <input type="text" placeholder="Stock del Producto" id="stock1"
-                                                            readonly>
+                                                    <label for="stock1">Stock:</label>
+                                                    <input type="text" placeholder="Stock del Producto" id="stock1"
+                                                        readonly>
 
                                                 </form>
                                             </div>
@@ -464,36 +465,36 @@
                             }
                         });
                     }
-                       //PARA HACER QUE SEA PURA MAYUSCULA Y SIN NUMEROS
-          function validarYConvertir(input) {
-            // Expresión regular que acepta solo letras y espacios
-            var regex = /^[A-Za-z\s]+$/;
+                    //PARA HACER QUE SEA PURA MAYUSCULA Y SIN NUMEROS
+                    function validarYConvertir(input) {
+                        // Expresión regular que acepta solo letras y espacios
+                        var regex = /^[A-Za-z\s]+$/;
 
-            if (!regex.test(input.value)) {
-              // Si el valor no cumple con la expresión regular, elimina los caracteres no permitidos
-              input.value = input.value.replace(/[^A-Za-z\s]+/, '');
-            }
+                        if (!regex.test(input.value)) {
+                            // Si el valor no cumple con la expresión regular, elimina los caracteres no permitidos
+                            input.value = input.value.replace(/[^A-Za-z\s]+/, '');
+                        }
 
-            // Convierte a mayúsculas
-            input.value = input.value.toUpperCase();
-          }
-//MAYUSCULA Y NUMERO SIN ESPACIO
-function validarYConvertir2(input) {
-    // Expresión regular que acepta solo letras mayúsculas y números
-    var regex = /^[A-Z0-9]+$/;
+                        // Convierte a mayúsculas
+                        input.value = input.value.toUpperCase();
+                    }
+                    //MAYUSCULA Y NUMERO SIN ESPACIO
+                    function validarYConvertir2(input) {
+                        // Expresión regular que acepta solo letras mayúsculas y números
+                        var regex = /^[A-Z0-9]+$/;
 
-    // Convierte a mayúsculas y elimina caracteres no permitidos
-    input.value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-}
+                        // Convierte a mayúsculas y elimina caracteres no permitidos
+                        input.value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                    }
 
-//MAYUSCULAS Y NUMERO CON ESPACIO
-function validarYConvertir1(input) {
-    // Expresión regular que acepta solo letras mayúsculas, números y espacios
-    var regex = /^[A-Z0-9\s]+$/;
+                    //MAYUSCULAS Y NUMERO CON ESPACIO
+                    function validarYConvertir1(input) {
+                        // Expresión regular que acepta solo letras mayúsculas, números y espacios
+                        var regex = /^[A-Z0-9\s]+$/;
 
-    // Convierte a mayúsculas y elimina caracteres no permitidos
-    input.value = input.value.toUpperCase().replace(/[^A-Z0-9\s]/g, '');
-}
+                        // Convierte a mayúsculas y elimina caracteres no permitidos
+                        input.value = input.value.toUpperCase().replace(/[^A-Z0-9\s]/g, '');
+                    }
                     //PARA BUSCAR EN MI TABLA
                     // Obtener referencia al campo de búsqueda
                     const campoBusqueda = document.getElementById('busqueda');
