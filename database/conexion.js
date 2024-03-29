@@ -15,10 +15,10 @@ const pool = mysql.createPool({
   user: 'root',
   password: 'BHWHZcuxqwCWnlhWuNAYTqNSfEmfojII',
   port: 53238,
-  database: 'cholon'
+  database: 'cholon' 
 });
 
-
+//------------
 
 // Exporta el pool para que pueda ser utilizado desde otros módulos
 module.exports = pool;
