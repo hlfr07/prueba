@@ -9,6 +9,7 @@ cloudinary.config({
 
 const uploadImage = (req, res) => {
     const { buffer } = req.file;
+    const { nombre } = req.body; // Asegúrate de que el nombre se envíe en el cuerpo de la solicitud
 
     // Convierte el buffer a una cadena Base64
     const base64Image = buffer.toString('base64');
@@ -21,11 +22,9 @@ const uploadImage = (req, res) => {
         } else {
             // Actualizar la URL de la imagen en la base de datos
             const imageUrl = result.secure_url;
-            res.status(200).json({ imageUrl }); // Enviar la URL segura como respuesta
+            res.status(200).json({ imageUrl, nombre }); // Enviar la URL segura y el nombre como respuesta
         }
     });
 };
-
-
 
 module.exports = { uploadImage };

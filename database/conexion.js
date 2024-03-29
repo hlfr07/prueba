@@ -11,11 +11,11 @@ const pool = mysql.createPool({
 
 */
 const pool = mysql.createPool({
-  host: 'b6xjmi7j0ue8hwkunxuy-mysql.services.clever-cloud.com',
-  user: 'upfmpx4fksb0n2rb',
-  password: 'DCOz8a8lnV98o3Wgpeof',
-  port: 3306,
-  database: 'b6xjmi7j0ue8hwkunxuy'
+  host: 'viaduct.proxy.rlwy.net',
+  user: 'root',
+  password: 'BHWHZcuxqwCWnlhWuNAYTqNSfEmfojII',
+  port: 53238,
+  database: 'cholon'
 });
 
 
