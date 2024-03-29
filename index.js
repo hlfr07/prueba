@@ -16,27 +16,13 @@ app.set('view engine', 'ejs');
 // ACA VAS A PONER DE DONDE VA BUSCAR EL HTML O EL EJS MAS DICHO AHI TE DEJO
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-// Configurar tipos MIME para archivos estáticos
-app.use(express.static(path.join(__dirname, 'public'), {
-    setHeaders: (res, path, stat) => {
-      if (path.endsWith('.js')) {
-        res.set('Content-Type', 'text/javascript');
-      }
-      // Agregar más tipos MIME según sea necesario para otros tipos de archivos
-    }
-  }));
+app.use("/public", express.static("public"));
+
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
 app.use('/src', express.static('src'))
-app.use(express.static(path.join(__dirname, 'src'), {
-    setHeaders: (res, path, stat) => {
-      if (path.endsWith('.js')) {
-        res.set('Content-Type', 'text/javascript');
-      }
-      // Agregar más tipos MIME según sea necesario para otros tipos de archivos
-    }
-  }));
+app.use('/src', express.static(__dirname + '/src'))
 
 
 //PARA PODER AGARRAR DATS DEL FORMULARIO LOGIN
