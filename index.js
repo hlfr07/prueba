@@ -16,8 +16,14 @@ app.set('view engine', 'ejs');
 // ACA VAS A PONER DE DONDE VA BUSCAR EL HTML O EL EJS MAS DICHO AHI TE DEJO
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-// ESTO ES PARA INDICAR DESDE DONDE VAS A LLAMAR LOS LINKS PARA TU HTML : ejmplos -> /src/views/vistaadmin/css/estilos.css -- para llamar css que esta dentro de carpeta vistaadmin , entras usuarios.ejs para que te des cuenta como llamo links como css ejemplo
+app.use("/public", express.static("public"));
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+
 app.use('/src', express.static('src'))
+app.use('/src', express.static(__dirname + '/src'))
+
 
 //PARA PODER AGARRAR DATS DEL FORMULARIO LOGIN
 app.use(express.urlencoded({ extended: true }));
