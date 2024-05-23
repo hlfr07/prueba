@@ -95,6 +95,16 @@ const { uploadImage } = require("../controllers/subirimagen");
 const router = express.Router();
 
 //PARA PROTEGER LAS RUTAS SI NO ESTA LOGEADO LML
+
+//GUARDA SESION DE USUARIO
+// Configurar express-session
+router.use(
+  session({
+    secret: "secreto",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 function protegerRutas(req, res, next) {
   const datosdelaSessiondeUsuario = req.session.user; // Obtener los datos del usuario de la sesión
 
@@ -119,16 +129,6 @@ function protegerRutas(req, res, next) {
     res.redirect("/login");
   }
 }
-
-//GUARDA SESION DE USUARIO
-// Configurar express-session
-router.use(
-  session({
-    secret: "secreto",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
 //PARA MI API DE SUBIDA DE IMAGENES
 
